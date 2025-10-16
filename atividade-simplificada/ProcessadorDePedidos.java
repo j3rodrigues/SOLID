@@ -8,27 +8,17 @@ class ProcessadorDePedidos {
     // Violação do SRP: Esta classe faz tudo
     public void processar(Pedido pedido) {
         // 1. Responsabilidade: Calcular o total
-        double total = 0;
-        for (Item item : pedido.getItens()) {
-            total += item.getPreco();
-        }
-        System.out.println("Total do pedido: " + total);
+        calc();
 
         // 2. Responsabilidade: Processar o pagamento
         // Violação do OCP: Aberto para modificação quando um novo pagamento surgir
-        if (pedido.getTipoPagamento().equals("cartao")) {
-            System.out.println("Processando pagamento via Cartão de Crédito...");
-            // Lógica específica para cartão
-        } else if (pedido.getTipoPagamento().equals("boleto")) {
-            System.out.println("Processando pagamento via Boleto Bancário...");
-            // Lógica específica para boleto
-        }
+        processo(pedido);
 
         // 3. Responsabilidade: Salvar no banco
         repositorio.salvar(pedido);
 
         // 4. Responsabilidade: Enviar e-mail
-        System.out.println("Enviando e-mail de confirmação...");
+        envio();
         // Lógica de envio de e-mail
     }
 }
