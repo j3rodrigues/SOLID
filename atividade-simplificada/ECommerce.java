@@ -5,7 +5,8 @@ public class ECommerce {
         pedido.adicionarItem(new Item("Mouse", 150.0));
         pedido.setTipoPagamento("cartao");
 
+        Banco repo = new MySQLRepositorio()
         ProcessadorDePedidos processador = new ProcessadorDePedidos();
-        processador.processar(pedido);
+        processador.processar(pedido,repo);
     }
 }
