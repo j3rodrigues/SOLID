@@ -1,21 +1,22 @@
 // Classe que representa o Pedido
 class Pedido {
+    // Violação do OCP: Aberto para modificação quando um novo pagamento surgir
     private java.util.List<Item> itens = new java.util.ArrayList<>();
     private String tipoPagamento; // "cartao", "boleto"
 
-    public void adicionarItem(Item item) {
+    private void adicionarItem(Item item) {
         itens.add(item);
     }
 
-    public java.util.List<Item> getItens() {
+    private java.util.List<Item> getItens() {
         return itens;
     }
 
-    public String getTipoPagamento() {
+    private String getTipoPagamento() {
         return tipoPagamento;
     }
 
-    public void setTipoPagamento(String tipoPagamento) {
+    private void setTipoPagamento(String tipoPagamento) {
         this.tipoPagamento = tipoPagamento;
     }
 }
